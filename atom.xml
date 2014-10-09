@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[All By My => self]]></title>
+  <title><![CDATA[All By My(self)]]></title>
   <link href="http://JoeJohnRobert.github.io/atom.xml" rel="self"/>
   <link href="http://JoeJohnRobert.github.io/"/>
-  <updated>2014-10-09T07:10:10-04:00</updated>
+  <updated>2014-10-09T08:57:43-04:00</updated>
   <id>http://JoeJohnRobert.github.io/</id>
   <author>
     <name><![CDATA[Joe Cardarelli]]></name>
@@ -14,11 +14,20 @@
 
   
   <entry>
-    <title type="html"><![CDATA[My First Post on Octopress]]></title>
-    <link href="http://JoeJohnRobert.github.io/blog/2014/10/09/my-first-post-on-octopress/"/>
-    <updated>2014-10-09T07:01:24-04:00</updated>
-    <id>http://JoeJohnRobert.github.io/blog/2014/10/09/my-first-post-on-octopress</id>
-    <content type="html"><![CDATA[<p>Hello, World</p>
+    <title type="html"><![CDATA[Getters and Setters]]></title>
+    <link href="http://JoeJohnRobert.github.io/blog/2014/10/09/getters-and-setters/"/>
+    <updated>2014-10-09T08:51:53-04:00</updated>
+    <id>http://JoeJohnRobert.github.io/blog/2014/10/09/getters-and-setters</id>
+    <content type="html"><![CDATA[<h3>It all makes sense now&hellip;</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">foo</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;bla&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
