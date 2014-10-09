@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Flatiron&nbspschool | All By My => self]]></title>
+  <link href="http://JoeJohnRobert.github.io/blog/categories/flatiron-and-nbspschool/atom.xml" rel="self"/>
+  <link href="http://JoeJohnRobert.github.io/"/>
+  <updated>2014-10-09T07:10:10-04:00</updated>
+  <id>http://JoeJohnRobert.github.io/</id>
+  <author>
+    <name><![CDATA[Joe Cardarelli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[My First Post on Octopress]]></title>
+    <link href="http://JoeJohnRobert.github.io/blog/2014/10/09/my-first-post-on-octopress/"/>
+    <updated>2014-10-09T07:01:24-04:00</updated>
+    <id>http://JoeJohnRobert.github.io/blog/2014/10/09/my-first-post-on-octopress</id>
+    <content type="html"><![CDATA[<p>Hello, World</p>
+]]></content>
+  </entry>
+  
+</feed>
