@@ -22,7 +22,7 @@ sweet_axe = Guitar.new
 sweet_axe.brand 
  =>NoMethodError: undefined method 'brand' #<Guitar:0x007f9aaa250ac0>
 sweet_axe.brand = "Fender"
- =>NoMethodError: undefined method 'name=' for #<Guitar:0x007f9aaa250ac0>
+ =>NoMethodError: undefined method 'brand=' for #<Guitar:0x007f9aaa250ac0>
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As you can see above, we get a NoMethodError without a getter and setter present. When I dug a little deeper, trying to understand various Stack Overflow posts, I realized that `attr_reader` and `attr_writer` were basically just aliases for the following Ruby methods. 
