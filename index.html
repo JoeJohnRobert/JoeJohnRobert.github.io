@@ -9,11 +9,7 @@
   <meta name="author" content="Joe Cardarelli">
 
   
-  <meta name="description" content="It all makes sense now&hellip; 1
-2
-3
-def foo puts &#39;bla&#39;
-end ">
+  <meta name="description" content="It all makes sense now&hellip; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When creating a class in Ruby, one must use getters and setters in order to read &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,13 +89,94 @@ end ">
 
   <div class="entry-content"><h3>It all makes sense now&hellip;</h3>
 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When creating a class in Ruby, one must use getters and setters in order to read and write to various instance variables of a class instance. For the longest time I didn&rsquo;t fully understand these getters and setters. I understood that <code>attr_reader</code> was used to read instance variables, <code>attr_writer</code> was used to write to instance variables and <code>attr_accessor</code> was used to both get and set instance variables. Beyond knowing the differences between the three, I didn&rsquo;t comprehend what was going on under the hood. I figured Ruby auto-magically allowed for reading and writing and I just had to accept it.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Let&rsquo;s say we have a class called <code>Guitar</code> and we wanted to read and write to the instance variable of <code>@brand</code>.</p>
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">foo</span>
-</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;bla&#39;</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Guitar</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">sweet_axe</span> <span class="o">=</span> <span class="no">Guitar</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'> <span class="o">=&gt;</span> <span class="c1">#&lt;Guitar:0x007f9aaa250ac0&gt;</span>
+</span><span class='line'><span class="n">sweet_axe</span><span class="o">.</span><span class="n">brand</span>
+</span><span class='line'> <span class="o">=&gt;</span><span class="ss">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="s1">&#39;brand&#39;</span> <span class="c1">#&lt;Guitar:0x007f9aaa250ac0&gt;</span>
+</span><span class='line'><span class="n">sweet_axe</span><span class="o">.</span><span class="n">brand</span> <span class="o">=</span> <span class="s2">&quot;Fender&quot;</span>
+</span><span class='line'> <span class="o">=&gt;</span><span class="ss">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="s1">&#39;name=&#39;</span> <span class="k">for</span> <span class="c1">#&lt;Guitar:0x007f9aaa250ac0&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As you can see above, we get a NoMethodError without a getter and setter present. When I dug a little deeper, trying to understand various Stack Overflow posts, I realized that <code>attr_reader</code> and <code>attr_writer</code> were basically just aliases for the following Ruby methods.</p>
+
+<h4>attr_reader :brand</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">brand</span>
+</span><span class='line'>  <span class="vi">@brand</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+<h4>attr_writer :brand</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">brand</span><span class="o">=</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+</span><span class='line'>  <span class="vi">@brand</span> <span class="o">=</span> <span class="n">str</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Simple enough, right? Wasn&rsquo;t for me. As soon as I saw the <code>def method=(str)</code> syntax, I panicked. &ldquo;What the h3ll is that?&rdquo; I thought. Is that an argument with a default value? Almost looks like it, but not quite. I assumed it was some crazy Ruby syntax I had never seen before. I simply didn&rsquo;t understand. It all finally clicked when I learned <strong>the <code>=</code> sign is just part of the method name.</strong> It&rsquo;s that easy. The <code>=</code> sign is nothing special. All you are doing is passing in an argument to the method and setting the instance variable to it.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With this understanding I can now make as many instances of the guitar class as I want, give them a brand and build some other cool methods using that brand method. Let&rsquo;s see how this works, using an <code>attr_accessor</code> instead of an <code>attr_reader</code> and <code>attr_writer</code> or the <code>brand</code> and <code>brand=</code> methods.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Guitar</span>
+</span><span class='line'><span class="kp">attr_accessor</span> <span class="ss">:brand</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">strum_that_guitar</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Now strumming my new </span><span class="si">#{</span><span class="n">brand</span><span class="si">}</span><span class="s2">!&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">sweet_axe</span> <span class="o">=</span> <span class="no">Guitar</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'> <span class="o">=&gt;</span> <span class="c1">#&lt;Guitar:0x007f9aaa250ac0&gt;</span>
+</span><span class='line'><span class="n">sweet_axe</span><span class="o">.</span><span class="n">brand</span> <span class="o">=</span> <span class="s2">&quot;Fender&quot;</span>
+</span><span class='line'> <span class="o">=&gt;</span> <span class="s2">&quot;Fender&quot;</span>
+</span><span class='line'><span class="n">sweet_axe</span><span class="o">.</span><span class="n">brand</span>
+</span><span class='line'> <span class="o">=&gt;</span> <span class="s2">&quot;Fender&quot;</span>
+</span><span class='line'><span class="n">sweet_axe</span><span class="o">.</span><span class="n">strum_that_guitar</span>
+</span><span class='line'><span class="no">Now</span> <span class="n">strumming</span> <span class="n">my</span> <span class="kp">new</span> <span class="no">Fender</span><span class="o">!</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 
 </div>
   
