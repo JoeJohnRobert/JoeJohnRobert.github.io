@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>All By My(self)</title>
+  <title>The Sample Method: Full Speed Ahead - All By My(self)</title>
   <meta name="author" content="Joe Cardarelli">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://JoeJohnRobert.github.io">
+  <link rel="canonical" href="http://JoeJohnRobert.github.io/blog/2014/10/23/the-sample-method-full-speed-ahead">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="All By My(self)" type="application/atom+xml">
@@ -63,15 +63,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/10/23/the-sample-method-full-speed-ahead/">The Sample Method: Full Speed Ahead</a></h1>
+      <h1 class="entry-title">The Sample Method: Full Speed Ahead</h1>
     
     
       <p class="meta">
@@ -87,7 +84,7 @@
   </header>
 
 
-  <div class="entry-content"><h3>Sample: My new favorite method</h3>
+<div class="entry-content"><h3>Sample: My new favorite method</h3>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Just yesterday, I found out about the <code>sample</code> method. Using the <code>sample</code> method will randomly select an element from the array of your choice.</p>
 
@@ -164,137 +161,46 @@
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Looking at the <code>real</code> column above, which shows the elapsed time in seconds, we can see that the <code>sample</code> method is almost twice as fast as using <code>[rand(numbers.size)]</code> and a whole lot faster (I&rsquo;ll leave the actual math up to you) than shuffling the array and taking the first element.</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Joe Cardarelli</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-10-23T17:45:37-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>5:45 pm</span></time>
+      
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2014/10/09/getters-and-setters/">Getters and Setters</a></h1>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://JoeJohnRobert.github.io/blog/2014/10/23/the-sample-method-full-speed-ahead/" data-via="" data-counturl="http://JoeJohnRobert.github.io/blog/2014/10/23/the-sample-method-full-speed-ahead/" >Tweet</a>
+  
+  
+  
+</div>
+
     
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-09T08:51:53-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:51 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>It all makes sense now&hellip;</h3>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When creating a class in Ruby, one must use getters and setters in order to read and write to various instance variables of a class instance. For the longest time I didn&rsquo;t fully understand these getters and setters. I understood that <code>attr_reader</code> was used to read instance variables, <code>attr_writer</code> was used to write to instance variables and <code>attr_accessor</code> was used to both get and set instance variables. Beyond knowing the differences between the three, I didn&rsquo;t comprehend what was going on under the hood. I figured Ruby auto-magically allowed for reading and writing and I just had to accept it.</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Let&rsquo;s say we have a class called <code>Guitar</code> and we wanted to read and write to the instance variable of <code>@brand</code>.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Guitar</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">sweet_axe</span> <span class="o">=</span> <span class="no">Guitar</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'> <span class="o">=&gt;</span> <span class="c1">#&lt;Guitar:0x007f9aaa250ac0&gt;</span>
-</span><span class='line'><span class="n">sweet_axe</span><span class="o">.</span><span class="n">brand</span>
-</span><span class='line'> <span class="o">=&gt;</span><span class="ss">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="s1">&#39;brand&#39;</span> <span class="c1">#&lt;Guitar:0x007f9aaa250ac0&gt;</span>
-</span><span class='line'><span class="n">sweet_axe</span><span class="o">.</span><span class="n">brand</span> <span class="o">=</span> <span class="s2">&quot;Fender&quot;</span>
-</span><span class='line'> <span class="o">=&gt;</span><span class="ss">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="s1">&#39;brand=&#39;</span> <span class="k">for</span> <span class="c1">#&lt;Guitar:0x007f9aaa250ac0&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As you can see above, we get a NoMethodError without a getter and setter present. When I dug a little deeper, trying to understand various Stack Overflow posts, I realized that <code>attr_reader</code> and <code>attr_writer</code> were basically just aliases for the following Ruby methods.</p>
-
-<h4>attr_reader :brand</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">brand</span>
-</span><span class='line'>  <span class="vi">@brand</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>attr_writer :brand</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">brand</span><span class="o">=</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
-</span><span class='line'>  <span class="vi">@brand</span> <span class="o">=</span> <span class="n">str</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Simple enough, right? Wasn&rsquo;t for me. As soon as I saw the <code>def method=(str)</code> syntax, I panicked. &ldquo;What the h3ll is that?&rdquo; I thought. Is that an argument with a default value? Almost looks like it, but not quite. I assumed it was some crazy Ruby syntax I had never seen before. I simply didn&rsquo;t understand. It all finally clicked when I learned <strong>the <code>=</code> sign is just part of the method name.</strong> It&rsquo;s that easy. The <code>=</code> sign is nothing special. All you are doing is passing in an argument to the method and setting the instance variable to it.</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With this understanding I can now make as many instances of the guitar class as I want, give them a brand and build some other cool methods using that brand method. Let&rsquo;s see how this works, using an <code>attr_accessor</code> instead of an <code>attr_reader</code> and <code>attr_writer</code> or the <code>brand</code> and <code>brand=</code> methods.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Guitar</span>
-</span><span class='line'><span class="kp">attr_accessor</span> <span class="ss">:brand</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">strum_that_guitar</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Now strumming my new </span><span class="si">#{</span><span class="n">brand</span><span class="si">}</span><span class="s2">!&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">sweet_axe</span> <span class="o">=</span> <span class="no">Guitar</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'> <span class="o">=&gt;</span> <span class="c1">#&lt;Guitar:0x007f9aaa250ac0&gt;</span>
-</span><span class='line'><span class="n">sweet_axe</span><span class="o">.</span><span class="n">brand</span> <span class="o">=</span> <span class="s2">&quot;Fender&quot;</span>
-</span><span class='line'> <span class="o">=&gt;</span> <span class="s2">&quot;Fender&quot;</span>
-</span><span class='line'><span class="n">sweet_axe</span><span class="o">.</span><span class="n">brand</span>
-</span><span class='line'> <span class="o">=&gt;</span> <span class="s2">&quot;Fender&quot;</span>
-</span><span class='line'><span class="n">sweet_axe</span><span class="o">.</span><span class="n">strum_that_guitar</span>
-</span><span class='line'><span class="no">Now</span> <span class="n">strumming</span> <span class="n">my</span> <span class="kp">new</span> <span class="no">Fender</span><span class="o">!</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/10/09/getters-and-setters/" title="Previous Post: Getters and Setters">&laquo; Getters and Setters</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -318,6 +224,7 @@
 
   
 </aside>
+
 
     </div>
   </div>

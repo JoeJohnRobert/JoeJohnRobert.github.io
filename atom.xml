@@ -4,7 +4,7 @@
   <title><![CDATA[All By My(self)]]></title>
   <link href="http://JoeJohnRobert.github.io/atom.xml" rel="self"/>
   <link href="http://JoeJohnRobert.github.io/"/>
-  <updated>2014-10-10T13:05:39-04:00</updated>
+  <updated>2014-10-24T07:33:55-04:00</updated>
   <id>http://JoeJohnRobert.github.io/</id>
   <author>
     <name><![CDATA[Joe Cardarelli]]></name>
@@ -12,6 +12,90 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Sample Method: Full Speed Ahead]]></title>
+    <link href="http://JoeJohnRobert.github.io/blog/2014/10/23/the-sample-method-full-speed-ahead/"/>
+    <updated>2014-10-23T17:45:37-04:00</updated>
+    <id>http://JoeJohnRobert.github.io/blog/2014/10/23/the-sample-method-full-speed-ahead</id>
+    <content type="html"><![CDATA[<h3>Sample: My new favorite method</h3>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Just yesterday, I found out about the <code>sample</code> method. Using the <code>sample</code> method will randomly select an element from the array of your choice.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">numbers</span> <span class="o">=</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="o">]</span>
+</span><span class='line'><span class="n">numbers</span><span class="o">.</span><span class="n">sample</span>
+</span><span class='line'> <span class="o">=&gt;</span> <span class="mi">5</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You can also pass <code>sample</code> an argument to return however many unique elements you would like.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">numbers</span> <span class="o">=</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="o">]</span>
+</span><span class='line'><span class="n">numbers</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'> <span class="o">=&gt;</span> <span class="o">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Prior to discovering the <code>sample</code> method, I accessed random elements using some other methods.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">numbers</span> <span class="o">=</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="o">]</span>
+</span><span class='line'><span class="n">numbers</span><span class="o">.</span><span class="n">shuffle</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'> <span class="o">=&gt;</span> <span class="mi">7</span>
+</span><span class='line'><span class="n">numbers</span><span class="o">[</span><span class="nb">rand</span><span class="p">(</span><span class="n">numbers</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">]</span>
+</span><span class='line'> <span class="o">=&gt;</span> <span class="mi">9</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Since these other methods also get the job done, I was curious as to what the upside of <code>sample</code> is. Aside from being much more elegant, IMHO, the <code>sample</code> method is also a lot faster. One can use Ruby&rsquo;s <code>Benchmark</code> module to test the speed of different lines of code.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;benchmark&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">numbers</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">5000000</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="nb">rand</span> <span class="p">}</span>
+</span><span class='line'><span class="no">Benchmark</span><span class="o">.</span><span class="n">bmbm</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">x</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s2">&quot;shuffle[0]&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="n">numbers</span><span class="o">.</span><span class="n">shuffle</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">x</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s2">&quot;[rand(numbers.size)]&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="n">numbers</span><span class="o">[</span><span class="nb">rand</span><span class="p">(</span><span class="n">numbers</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">]</span>  <span class="p">}</span>
+</span><span class='line'>  <span class="n">x</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)</span> <span class="p">{</span><span class="n">numbers</span><span class="o">.</span><span class="n">sample</span><span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I know the excitement is hard to contain, but before we test the speed of our random selection methods, let&rsquo;s walk through the above speed test. First, I create an array of 5 milllion different floats using the <code>map</code> method. Calling <code>rand</code> in the block with no argument will give you floats. If I had supplied <code>rand</code> with an argument, let&rsquo;s say <code>2</code>, the map method would return an array of 5 million integers with the possible values of <code>0</code> or <code>1</code>. If we pass in <code>3</code> to <code>rand</code> instead, we would get an array with the possible values of <code>0</code>, <code>1</code>, or <code>2</code>. You get the picture.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Now on the the actual test. By using the <code>bmbm</code> method on Benchmark, you can test the speed of several lines of code at once. This is preferable to the similar <code>bm</code> method, because the order of tests may affect their speed, based on memory use and garbage collection. Another cool feature of the <code>Benchmark</code> module is that you can pass in a string argument to the <code>report</code> method, which will label each test for clarity. Now the moment we&rsquo;ve all been waiting for; let&rsquo;s see how fast this <code>sample</code> method actually is.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>                     <span class="n">user</span>     <span class="nb">system</span>      <span class="n">total</span>        <span class="n">real</span>
+</span><span class='line'><span class="n">shuffle</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>           <span class="mi">0</span><span class="o">.</span><span class="mi">290000</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span>   <span class="mi">0</span><span class="o">.</span><span class="mi">290000</span> <span class="p">(</span>  <span class="mi">0</span><span class="o">.</span><span class="mi">296134</span><span class="p">)</span>
+</span><span class='line'><span class="nb">rand</span><span class="p">(</span><span class="n">numbers</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span> <span class="p">(</span>  <span class="mi">0</span><span class="o">.</span><span class="mo">00000</span><span class="mi">8</span><span class="p">)</span>
+</span><span class='line'><span class="n">sample</span>               <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span> <span class="p">(</span>  <span class="mi">0</span><span class="o">.</span><span class="mo">000005</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Looking at the <code>real</code> column above, which shows the elapsed time in seconds, we can see that the <code>sample</code> method is almost twice as fast as using <code>[rand(numbers.size)]</code> and a whole lot faster (I&rsquo;ll leave the actual math up to you) than shuffling the array and taking the first element.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Getters and Setters]]></title>
