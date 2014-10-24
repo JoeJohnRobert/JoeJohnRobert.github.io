@@ -24,7 +24,7 @@ numbers.sample(3)
  => [7, 0, 3]
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Prior to discovering the `sample` method, I accessed random elements using other methods.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Prior to discovering the `sample` method, I accessed random elements using some other methods.
 
 ```ruby
 numbers = [0,1,2,3,4,5,6,7,8,9]
@@ -51,13 +51,15 @@ end
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Now on the the actual test. By using the `bmbm` method on Benchmark, you can test the speed of several lines of code at once. This is preferable to the similar `bm` method, because the order of tests may affect their speed, based on memory use and garbage collection. Another cool feature of the `Benchmark` module is that you can pass in a string argument to the `report` method, which will label each test for clarity. Now the moment we've all been waiting for; let's see how fast this `sample` method actually is. 
 
-`
+
+```
                          user     system      total        real
 shuffle[0]           0.290000   0.000000   0.290000 (  0.296134)
 rand(numbers.size)   0.000000   0.000000   0.000000 (  0.000008)
 sample               0.000000   0.000000   0.000000 (  0.000005)
-`
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Looking at the "real" column above, which shows the elapsed time in seconds, we can see that the `sample` method is almost twice as fast as using [rand(numbers.size)]
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Looking at the `real` column above, which shows the elapsed time in seconds, we can see that the `sample` method is almost twice as fast as using `[rand(numbers.size)]` and a whole lot faster (I'll leave the actual math up to you) than shuffling the array and taking the first element. 
 
 
 
