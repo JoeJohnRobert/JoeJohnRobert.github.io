@@ -4,7 +4,7 @@
   <title><![CDATA[All By My(self)]]></title>
   <link href="http://JoeJohnRobert.github.io/atom.xml" rel="self"/>
   <link href="http://JoeJohnRobert.github.io/"/>
-  <updated>2014-10-24T07:33:55-04:00</updated>
+  <updated>2014-11-24T07:45:43-05:00</updated>
   <id>http://JoeJohnRobert.github.io/</id>
   <author>
     <name><![CDATA[Joe Cardarelli]]></name>
@@ -12,6 +12,43 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Deploying to Heroku]]></title>
+    <link href="http://JoeJohnRobert.github.io/blog/2014/11/18/deploying-to-heroku/"/>
+    <updated>2014-11-18T18:20:41-05:00</updated>
+    <id>http://JoeJohnRobert.github.io/blog/2014/11/18/deploying-to-heroku</id>
+    <content type="html"><![CDATA[<h3>Six Steps</h3>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; So, you&rsquo;ve built your app and now want to get it live for all the world to see. Heroku is a great option for this. While Heroku has some very in-depth documentation, I constantly find myself looking up the steps again and again. With this post, I will detail the six steps you need to follow to quickly deploy a basic app to Heroku, while hiding any sensitive information such as personal keys used to interact with an API.</p>
+
+<p><strong>1. Create a free account</strong></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The first thing you are going to want to do is head over to [<a href="https://signup.heroku.com/dc">https://signup.heroku.com/dc</a>] and set up a free account.</p>
+
+<p><strong>2. brew install heroku</strong></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Next, install heroku. My favorite way to do this is on the command line via using Homebrew.</p>
+
+<p><strong>3. heroku create</strong></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Now, you&rsquo;re all set up to create your app. CD into the your app&rsquo;s directory and run <code>heroku create</code>. Heroku will create a url to your app with a ridiculous default name and url, usually about nature. This command will also set up a heroku remote to use with git.</p>
+
+<p><strong>4. heroku config:set KEY=value</strong></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you have any API keys or other sensitive data, Heroku provides you with convenient config variables to store and access this information. Let&rsquo;s say I have a super secret key. I can set the value by running <code>heroku config: set SUPER_SECRET_KEY=124kjh537b</code>. Then you can access this variable in your application as so, <code>ENV['SUPER_SECRET_KEY']</code>. Each time you set a new secret key for your application, Heroku will update and restart your app, in case you have already deployed at this point.</p>
+
+<p><strong>5. PostgreSQL</strong></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In order to successfully push your Heroku app up to the web, you will need to use PostgreSQL as your production database, at the very least. You can do this by adding the following line to your gemfile: <code>gem 'pg', group: :production</code> and changing the <code>adapter</code> in your <code>config/database.yml</code> to <code>adapter: postgresql</code>. While using PostgreSQL as your production database, and SQLite as your development database is okay in the short term, it is recommended to use the same database in both the development and production environments in order to avoid headaches in the future.</p>
+
+<p><strong>6. git push heroku master</strong></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You are now ready to push your newly created app up to Heroku. Commit your changes if you repo is not already up-to-date and run <code>git push heroku master</code> which will push to your heroku remote.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your app is now up! Go checkout it out using the url Heroku provided to you in step 3. As I said before, these steps are for basic app deployment. Once you have a full-fledged Rails application, you will likely need t troubleshoot a little bit to get all of your styling to appear correctly. For this reason, I like to deploy early and often to make the debugging process and painless as possible.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Sample Method: Full Speed Ahead]]></title>
@@ -88,7 +125,7 @@
 <span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'>                     <span class="n">user</span>     <span class="nb">system</span>      <span class="n">total</span>        <span class="n">real</span>
 </span><span class='line'><span class="n">shuffle</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>           <span class="mi">0</span><span class="o">.</span><span class="mi">290000</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span>   <span class="mi">0</span><span class="o">.</span><span class="mi">290000</span> <span class="p">(</span>  <span class="mi">0</span><span class="o">.</span><span class="mi">296134</span><span class="p">)</span>
-</span><span class='line'><span class="nb">rand</span><span class="p">(</span><span class="n">numbers</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span> <span class="p">(</span>  <span class="mi">0</span><span class="o">.</span><span class="mo">00000</span><span class="mi">8</span><span class="p">)</span>
+</span><span class='line'><span class="o">[</span><span class="nb">rand</span><span class="p">(</span><span class="n">numbers</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">]</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span> <span class="p">(</span>  <span class="mi">0</span><span class="o">.</span><span class="mo">00000</span><span class="mi">8</span><span class="p">)</span>
 </span><span class='line'><span class="n">sample</span>               <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span>   <span class="mi">0</span><span class="o">.</span><span class="mo">000000</span> <span class="p">(</span>  <span class="mi">0</span><span class="o">.</span><span class="mo">000005</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 

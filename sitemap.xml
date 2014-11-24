@@ -3,6 +3,14 @@
   
   
   <url>
+    <loc>http://JoeJohnRobert.github.io/blog/2014/11/18/deploying-to-heroku/</loc>
+    
+    <lastmod>2014-11-18T18:20:41-05:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://JoeJohnRobert.github.io/blog/2014/10/23/the-sample-method-full-speed-ahead/</loc>
     
     <lastmod>2014-10-23T17:45:37-04:00</lastmod>
@@ -21,14 +29,14 @@
   
   <url>
     <loc>http://JoeJohnRobert.github.io/blog/archives/</loc>
-    <lastmod>2014-10-24T07:33:55-04:00</lastmod>
+    <lastmod>2014-11-24T07:45:43-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://JoeJohnRobert.github.io/</loc>
-    <lastmod>2014-10-24T07:33:55-04:00</lastmod>
+    <lastmod>2014-11-24T07:45:43-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
