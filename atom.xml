@@ -4,7 +4,7 @@
   <title><![CDATA[All By My(self)]]></title>
   <link href="http://JoeJohnRobert.github.io/atom.xml" rel="self"/>
   <link href="http://JoeJohnRobert.github.io/"/>
-  <updated>2014-12-09T10:33:41-05:00</updated>
+  <updated>2014-12-09T10:41:07-05:00</updated>
   <id>http://JoeJohnRobert.github.io/</id>
   <author>
     <name><![CDATA[Joe Cardarelli]]></name>
@@ -22,7 +22,19 @@
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Yesterday, I was implementing a Google map in a Rails project. I needed to pass coordinates from a controller to a Google maps script. This is where jQuery data attributes come in. You can&rsquo;t just throw an ERB tag in a script, but you can assign embedded ruby to a data attribute.</p>
 
-<p> <h1 class='big-text' data-latitude='<%= @user.latitude %>&lsquo; data-longitude=&rsquo;&lt;%= @user.longitude %>&lsquo;></h1></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'> <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">&#39;big-text&#39;</span> <span class="na">data-latitude=</span><span class="s">&#39;&lt;%= @user.latitude %&gt;&#39;</span> <span class="na">data-longitude=</span><span class="s">&#39;&lt;%= @user.longitude %&gt;&#39;</span><span class="nt">&gt;&lt;/h1&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Now, I can assign my data attributes to a JS variable for use in the Google maps script.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">lat</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;h1.big-text&quot;</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;latitude&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">lng</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;h1.big-text&quot;</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;longitude&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
