@@ -9,7 +9,7 @@
   <meta name="author" content="Joe Cardarelli">
 
   
-  <meta name="description" content="Six Steps &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; So, you&rsquo;ve built your app and now want to get it live for all the world to see. Heroku is a &hellip;">
+  <meta name="description" content="Ever need some Ruby in your JS? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Yesterday, I was implementing a Google map in a Rails project. I needed to pass &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,39 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/09/jquery-data-attributes/">jQuery Data Attributes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-09T09:29:25-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:29 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Ever need some Ruby in your JS?</h3>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Yesterday, I was implementing a Google map in a Rails project. I needed to pass coordinates from a controller to a Google maps script. This is where jQuery data attributes come in. You can&rsquo;t just throw an ERB tag in a script, but you can assign embedded ruby to a data attribute.</p>
+
+<p> <h1 class='big-text' data-latitude='<%= @user.latitude %>&lsquo; data-longitude=&rsquo;&lt;%= @user.longitude %>&lsquo;></h1></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -357,6 +390,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/09/jquery-data-attributes/">jQuery Data Attributes</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/11/18/deploying-to-heroku/">Deploying to Heroku</a>

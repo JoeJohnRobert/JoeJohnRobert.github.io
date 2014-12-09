@@ -4,7 +4,7 @@
   <title><![CDATA[All By My(self)]]></title>
   <link href="http://JoeJohnRobert.github.io/atom.xml" rel="self"/>
   <link href="http://JoeJohnRobert.github.io/"/>
-  <updated>2014-11-24T07:59:50-05:00</updated>
+  <updated>2014-12-09T10:33:41-05:00</updated>
   <id>http://JoeJohnRobert.github.io/</id>
   <author>
     <name><![CDATA[Joe Cardarelli]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[jQuery Data Attributes]]></title>
+    <link href="http://JoeJohnRobert.github.io/blog/2014/12/09/jquery-data-attributes/"/>
+    <updated>2014-12-09T09:29:25-05:00</updated>
+    <id>http://JoeJohnRobert.github.io/blog/2014/12/09/jquery-data-attributes</id>
+    <content type="html"><![CDATA[<h3>Ever need some Ruby in your JS?</h3>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Yesterday, I was implementing a Google map in a Rails project. I needed to pass coordinates from a controller to a Google maps script. This is where jQuery data attributes come in. You can&rsquo;t just throw an ERB tag in a script, but you can assign embedded ruby to a data attribute.</p>
+
+<p> <h1 class='big-text' data-latitude='<%= @user.latitude %>&lsquo; data-longitude=&rsquo;&lt;%= @user.longitude %>&lsquo;></h1></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Deploying to Heroku]]></title>
