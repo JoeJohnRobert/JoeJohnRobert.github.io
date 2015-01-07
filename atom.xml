@@ -4,7 +4,7 @@
   <title><![CDATA[ActiveBlogger]]></title>
   <link href="http://JoeJohnRobert.github.io/atom.xml" rel="self"/>
   <link href="http://JoeJohnRobert.github.io/"/>
-  <updated>2015-01-07T15:43:03-05:00</updated>
+  <updated>2015-01-07T15:47:16-05:00</updated>
   <id>http://JoeJohnRobert.github.io/</id>
   <author>
     <name><![CDATA[Joe Cardarelli]]></name>
@@ -47,7 +47,7 @@
 
 <h5>Controller setup</h5>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When you first look at a controller which has adopted the decent_exposure way, your first thought might be how little code there actually is. There are no instance variables to define and there is very little going on in each action. You set up some methods for your views using with a call to the <code>expose</code> method provided to you by the gem. Then you set up some redirecting for the <code>create</code>, <code>update</code> and <code>destroy</code> actions and that&rsquo;s about it.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When you first look at a controller which has adopted the decent_exposure way, your first thought might be how little code there actually is. There are no instance variables to define and there is very little going on in each action. You set up some methods for your views with a call to the <code>expose</code> method provided to you by the gem. Then you set up some redirecting for the <code>create</code>, <code>update</code> and <code>destroy</code> actions and that&rsquo;s about it.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -126,7 +126,7 @@
 
 <p><strong>3. There is a params method that returns a Hash-like structure which has either an id key or a guitar_id key.</strong></p>
 
-<p>You will also see, that there is no need to define index, new or show actions. Normally, you would just set these up with instance variables, but using the <code>expose</code> method, decent_exposure serves them up for you. You might be wondering, how does decent_exposure decide whether <code>guitar</code> should be a new instance or one that&rsquo;s already persisted? If there is an <code>id</code> key in params, like on a <code>show</code> page, decent_exposure will try to find the <code>guitar</code> with that <code>id</code>. Othewise, it will create a new instance, like in a form in the <code>new</code> template. If you wanted to search by something other than the <code>id</code>, you can set a value to the <code>finder_parameter</code> as so:</p>
+<p>You will also see that there is no need to define index, new or show actions. Normally, you would just set these up with instance variables, but using the <code>expose</code> method, decent_exposure serves them up for you. You might be wondering, how does decent_exposure decide whether <code>guitar</code> should be a new instance or one that&rsquo;s already persisted? If there is an <code>id</code> key in params, like on a <code>show</code> page, decent_exposure will try to find the <code>guitar</code> with that <code>id</code>. Othewise, it will create a new instance, like in a form in the <code>new</code> template. If you wanted to search by something other than the <code>id</code>, you can set a value to the <code>finder_parameter</code> as so:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">expose</span><span class="p">(</span><span class="ss">:guitar</span><span class="p">,</span> <span class="ss">finder_parameter</span><span class="p">:</span> <span class="ss">:guitar_id</span><span class="p">)</span>
@@ -135,7 +135,7 @@
 
 <h5>Use with strong_parameters</h5>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Another layer of implicitness that I that was pretty cool, is the fact that you don&rsquo;t even have to build out your create or update actions. Normally you would do something like this:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Another layer of implicitness that I thought was pretty cool is the fact that you don&rsquo;t even have to build out your create or update actions. Normally you would do something like this:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -159,7 +159,7 @@
 
 
 <p>
-With decent_exposure, finding the <code>axe_master</code> in question and building a a <code>guitar</code> from the object all happens implicitly. In order to use strong_parameters, however, there are two bits of code you must add. First, when you <code>expose</code> the <code>guitar</code> object, you have declare the name of your params method that decent_exposure will look for:</p>
+With decent_exposure, finding the <code>axe_master</code> in question and building a <code>guitar</code> from the object all happens implicitly. In order to use strong_parameters, however, there are two bits of code you must add. First, when you <code>expose</code> the <code>guitar</code> object, you have to declare the name of your params method that decent_exposure will look for:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">expose</span><span class="p">(</span><span class="ss">:guitar</span><span class="p">,</span> <span class="ss">attributes</span><span class="p">:</span> <span class="ss">:guitar_params</span><span class="p">)</span>
@@ -269,7 +269,7 @@ With decent_exposure, finding the <code>axe_master</code> in question and buildi
 
 <h5>Customize and conquer</h5>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hopefully, this simple guide is enough to help you understand decent_exposure and get it up and running yourself. As mentioned before, decent_exposure relies a lot on convention, but there are many more ways to customize its use that aren&rsquo;t mentioned here. Head over to the <a href="https://github.com/hashrocket/decent_exposure">documentation</a> to read up on these.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hopefully, this simple guide is enough to help you understand decent_exposure and get it up and running yourself. As mentioned before, decent_exposure relies a lot on convention, but there are many more ways to customize its use that aren&rsquo;t mentioned here. Head over to the <a href="https://github.com/hashrocket/decent_exposure">documentation</a> to read up on these and learn more.</p>
 ]]></content>
   </entry>
   
