@@ -4,7 +4,7 @@
   <title><![CDATA[All By My(self)]]></title>
   <link href="http://JoeJohnRobert.github.io/atom.xml" rel="self"/>
   <link href="http://JoeJohnRobert.github.io/"/>
-  <updated>2015-01-07T12:53:48-05:00</updated>
+  <updated>2015-01-07T12:58:11-05:00</updated>
   <id>http://JoeJohnRobert.github.io/</id>
   <author>
     <name><![CDATA[Joe Cardarelli]]></name>
@@ -22,8 +22,9 @@
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Recently, I&rsquo;ve been exploring working with the decent_exposure gem. With decent_exposure you can clean up your controllers and better encapsulate your code. Instead of setting instance variables in each action of your controller, decent_exposure sets up methods in your controller which you can directly call in your view, thereby decreasing repetition.</p>
 
-<p><strong>First steps</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The first thing you are going to do is add <code>gem 'decent_exposure'</code> to your gemfile and then of course <code>bundle</code>.</p>
+<h5>First steps</h5>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The first thing you are going to do is add <code>gem 'decent_exposure'</code> to your gemfile and then of course <code>bundle</code>.</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For the purposes of getting to know decent_exposure, I put together a simple application where musicians or <code>axe_masters</code> can keep track of their many <code>guitars</code>. <code>Guitars</code> are nested as a resource under <code>axe_masters</code>.</p>
 
@@ -42,8 +43,9 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><strong>Controller setup</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When you first look at a controller which has adopted the decent_exposure way, your first thought might be how little code there actually is. There are no instance variables to define and there is very little going on in each action. You set up some methods for your views using with a call to the <code>expose</code> method provided to you by the gem. Then you set up some redirecting for the <code>create</code>, <code>update</code> and <code>destroy</code> actions and that&rsquo;s about it.</p>
+<h5>Controller setup</h5>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When you first look at a controller which has adopted the decent_exposure way, your first thought might be how little code there actually is. There are no instance variables to define and there is very little going on in each action. You set up some methods for your views using with a call to the <code>expose</code> method provided to you by the gem. Then you set up some redirecting for the <code>create</code>, <code>update</code> and <code>destroy</code> actions and that&rsquo;s about it.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -116,9 +118,11 @@
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; As you can see above, rather than defining <code>@axe_master</code> and <code>@guitar</code> instance variables in each action, you call <code>expose</code> and pass the object you&rsquo;d like to reference. Magic, right? Nope, you guessed it; decent_exposure relies on a few conventions. Straight from the documentation, the conventions are as follows. With the <code>guitar</code> object in mind:</p>
 
-<p><strong>1. There is an object named <code>Guitar</code>.</strong>
-<strong>2. <code>Guitar</code> has a <code>.find</code> method that takes an id.</strong>
-<strong>3. There is a params method that returns a Hash-like structure which has either an id key or a guitar_id key.</strong></p>
+<p><strong>1. There is an object named <code>Guitar</code>.</strong></p>
+
+<p><strong>2. <code>Guitar</code> has a <code>.find</code> method that takes an id.</strong></p>
+
+<p><strong>3. There is a params method that returns a Hash-like structure which has either an id key or a guitar_id key.</strong></p>
 
 <p>You will also see, that there is no need to define index, new or show actions. Normally, you would just set these up with instance variables, but using the <code>expose</code> method, decent_exposure serves them up for you. You might be wondering, how does decent_exposure decide whether <code>guitar</code> should be a new instance or one that&rsquo;s already persisted? If there is an <code>id</code> key in params, like on a <code>show</code> page, decent_exposure will try to find the <code>guitar</code> with that <code>id</code>. Othewise, it will create a new instance, like in a form in the <code>new</code> template. If you wanted to search by something other than the <code>id</code>, you can set a value to the <code>finder_parameter</code> as so:</p>
 
@@ -127,8 +131,9 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><strong>Use with strong_parameters</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Another layer of implicitness that I that was pretty cool, is the fact that you don&rsquo;t even have to build out your create or update actions. Normally you would do something like this:</p>
+<h5>Use with strong_parameters</h5>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Another layer of implicitness that I that was pretty cool, is the fact that you don&rsquo;t even have to build out your create or update actions. Normally you would do something like this:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -172,8 +177,9 @@ With decent_exposure, finding the <code>axe_master</code> in question and buildi
 
 <p>With this in place you are all set to use strong_params.</p>
 
-<p><strong>Views</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Now that our controller is good to go, let&rsquo;s take a look at the views. Just as you guessed, we can call the methods we set up with <code>expose</code> in our views rather than using instance variables. First, we have our template for creating or updating a <code>guitar</code>:</p>
+<h5>Views</h5>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Now that our controller is good to go, let&rsquo;s take a look at the views. Just as you guessed, we can call the methods we set up with <code>expose</code> in our views rather than using instance variables. First, we have our template for creating or updating a <code>guitar</code>:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -259,8 +265,9 @@ With decent_exposure, finding the <code>axe_master</code> in question and buildi
 
 <p>Exposing just the <code>guitars</code> method is enough, however. The rest is implicit. Pretty cool.</p>
 
-<p><strong>Customize and conquer</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hopefully, this simple guide is enough to help you understand decent_exposure and get it up and running yourself. As mentioned before, decent_exposure relies a lot on convention, but there are many more ways to customize its use that aren&rsquo;t mentioned here. Head over to the <a href="https://github.com/hashrocket/decent_exposure">documentation</a> to read up on these.</p>
+<h5>Customize and conquer</h5>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hopefully, this simple guide is enough to help you understand decent_exposure and get it up and running yourself. As mentioned before, decent_exposure relies a lot on convention, but there are many more ways to customize its use that aren&rsquo;t mentioned here. Head over to the <a href="https://github.com/hashrocket/decent_exposure">documentation</a> to read up on these.</p>
 ]]></content>
   </entry>
   
