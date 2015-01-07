@@ -4,7 +4,7 @@
   <title><![CDATA[ActiveBlogger]]></title>
   <link href="http://JoeJohnRobert.github.io/atom.xml" rel="self"/>
   <link href="http://JoeJohnRobert.github.io/"/>
-  <updated>2015-01-07T15:29:32-05:00</updated>
+  <updated>2015-01-07T15:43:03-05:00</updated>
   <id>http://JoeJohnRobert.github.io/</id>
   <author>
     <name><![CDATA[Joe Cardarelli]]></name>
@@ -18,7 +18,7 @@
     <link href="http://JoeJohnRobert.github.io/blog/2015/01/07/getting-started-with-decent-exposure/"/>
     <updated>2015-01-07T10:22:05-05:00</updated>
     <id>http://JoeJohnRobert.github.io/blog/2015/01/07/getting-started-with-decent-exposure</id>
-    <content type="html"><![CDATA[<h3>A quick guide for getting started with decent_exposure Ruby gem</h3>
+    <content type="html"><![CDATA[<h3>A quick guide for getting started with the decent_exposure Ruby gem</h3>
 
 <p><img class="center" src="http://JoeJohnRobert.github.io/images/decent_guitar.png" width="450" height="450" title="image" alt="images"></p>
 
