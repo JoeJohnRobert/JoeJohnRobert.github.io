@@ -4,7 +4,7 @@
   <title><![CDATA[ActiveBlogger]]></title>
   <link href="http://JoeJohnRobert.github.io/atom.xml" rel="self"/>
   <link href="http://JoeJohnRobert.github.io/"/>
-  <updated>2015-01-07T13:17:00-05:00</updated>
+  <updated>2015-01-07T13:18:09-05:00</updated>
   <id>http://JoeJohnRobert.github.io/</id>
   <author>
     <name><![CDATA[Joe Cardarelli]]></name>
@@ -20,7 +20,7 @@
     <id>http://JoeJohnRobert.github.io/blog/2015/01/07/getting-started-with-decent-exposure</id>
     <content type="html"><![CDATA[<h3>A quick guide for getting started with decent_exposure</h3>
 
-<p><img class="center" src="http://JoeJohnRobert.github.io/images/decent_exposure.png" width="350" height="350" title="image" alt="images"></p>
+<p><img class="center" src="http://JoeJohnRobert.github.io/images/decent_guitar.png" width="350" height="550" title="image" alt="images"></p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Recently, I&rsquo;ve been exploring working with the decent_exposure gem. With decent_exposure you can clean up your controllers and better encapsulate your code. Instead of setting instance variables in each action of your controller, decent_exposure sets up methods in your controller which you can directly call in your view, thereby decreasing repetition.</p>
 
