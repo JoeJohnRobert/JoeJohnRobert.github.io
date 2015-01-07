@@ -266,22 +266,22 @@ With decent_exposure, finding the <code>axe_master</code> in question and buildi
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sx">%= form_for [axe_master, guitar] do |f| %&gt;</span>
-</span><span class='line'><span class="sx">  &lt;p&gt;</span>
-</span><span class='line'><span class="sx">    &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">label</span> <span class="ss">:make</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">    &lt;%= f.text_field :make %&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'><span class="sr">  &lt;p&gt;</span>
-</span><span class='line'><span class="sr">    &lt;%= f.label :model %&gt;</span>
-</span><span class='line'><span class="sr">    &lt;%= f.text_field :model %&gt;</span>
-</span><span class='line'><span class="sr">  &lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :color %&gt;</span>
-</span><span class='line'><span class="sx">    &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:color</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  &lt;/p&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= f.hidden_field :axe_master_id, value: axe_master.id %&gt;</span>
-</span><span class='line'><span class="sx">  &lt;p&gt; &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">submit</span> <span class="s1">&#39;Submit!&#39;</span> <span class="sx">%&gt; &lt;/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="cp">&lt;%=</span> <span class="n">form_for</span> <span class="o">[</span><span class="n">axe_master</span><span class="p">,</span> <span class="n">guitar</span><span class="o">]</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">  &lt;p&gt;</span>
+</span><span class='line'><span class="x">    </span><span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">label</span> <span class="ss">:make</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">    </span><span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:make</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">  &lt;/p&gt;</span>
+</span><span class='line'><span class="x">  &lt;p&gt;</span>
+</span><span class='line'><span class="x">    </span><span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">label</span> <span class="ss">:model</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">    </span><span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:model</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">  &lt;/p&gt;</span>
+</span><span class='line'><span class="x">  &lt;p&gt;</span>
+</span><span class='line'><span class="x">    </span><span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">label</span> <span class="ss">:color</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">    </span><span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:color</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">  &lt;/p&gt;</span>
+</span><span class='line'><span class="x">  </span><span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">hidden_field</span> <span class="ss">:axe_master_id</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="n">axe_master</span><span class="o">.</span><span class="n">id</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">  &lt;p&gt; </span><span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">submit</span> <span class="s1">&#39;Submit!&#39;</span> <span class="cp">%&gt;</span><span class="x"> &lt;/p&gt;</span>
+</span><span class='line'><span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -299,18 +299,18 @@ With decent_exposure, finding the <code>axe_master</code> in question and buildi
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sx">%= link_to &quot;New Axe&quot;, new_axe_master_guitar_path(axe_master) %&gt;</span>
-</span><span class='line'><span class="sx">&lt;h1&gt; &lt;%=</span> <span class="n">axe_master</span><span class="o">.</span><span class="n">name</span> <span class="sx">%&gt;&#39;s Page &lt;/h1&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span> <span class="no">Guitars</span> <span class="o">&lt;</span><span class="sr">/h3&gt;</span>
-</span><span class='line'><span class="sr">  &lt;ul&gt; </span>
-</span><span class='line'><span class="sr">    &lt;% guitars.each do |axe| %&gt;</span>
-</span><span class='line'><span class="sr">    &lt;li&gt; </span>
-</span><span class='line'><span class="sr">      &lt;%= axe.make %&gt; - &lt;%= axe.model %&gt;, &lt;%= axe.color %&gt; </span>
-</span><span class='line'><span class="sr">      &lt;%= link_to &quot;Edit&quot;, axe_master_guitar_path(axe_master, axe) %&gt;</span>
-</span><span class='line'><span class="sr">      &lt;%= link_to &quot;Delete&quot;, axe_master_guitar_path(axe_master, axe), :method =&gt; :delete, :confirm =&gt; &quot;Are you sure?&quot; %&gt;  </span>
-</span><span class='line'><span class="sr">    &lt;/</span><span class="n">li</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="sx">% end %&gt;</span>
-</span><span class='line'><span class="sx">  &lt;/ul&gt;</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;New Axe&quot;</span><span class="p">,</span> <span class="n">new_axe_master_guitar_path</span><span class="p">(</span><span class="n">axe_master</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">&lt;h1&gt; </span><span class="cp">&lt;%=</span> <span class="n">axe_master</span><span class="o">.</span><span class="n">name</span> <span class="cp">%&gt;</span><span class="x">&#39;s Page &lt;/h1&gt; </span>
+</span><span class='line'><span class="x">&lt;h3&gt; Guitars &lt;/h3&gt;</span>
+</span><span class='line'><span class="x">  &lt;ul&gt; </span>
+</span><span class='line'><span class="x">    </span><span class="cp">&lt;%</span> <span class="n">guitars</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">axe</span><span class="o">|</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">    &lt;li&gt; </span>
+</span><span class='line'><span class="x">      </span><span class="cp">&lt;%=</span> <span class="n">axe</span><span class="o">.</span><span class="n">make</span> <span class="cp">%&gt;</span><span class="x"> - </span><span class="cp">&lt;%=</span> <span class="n">axe</span><span class="o">.</span><span class="n">model</span> <span class="cp">%&gt;</span><span class="x">, </span><span class="cp">&lt;%=</span> <span class="n">axe</span><span class="o">.</span><span class="n">color</span> <span class="cp">%&gt;</span><span class="x"> </span>
+</span><span class='line'><span class="x">      </span><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Edit&quot;</span><span class="p">,</span> <span class="n">axe_master_guitar_path</span><span class="p">(</span><span class="n">axe_master</span><span class="p">,</span> <span class="n">axe</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">      </span><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Delete&quot;</span><span class="p">,</span> <span class="n">axe_master_guitar_path</span><span class="p">(</span><span class="n">axe_master</span><span class="p">,</span> <span class="n">axe</span><span class="p">),</span> <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:delete</span><span class="p">,</span> <span class="ss">:confirm</span> <span class="o">=&gt;</span> <span class="s2">&quot;Are you sure?&quot;</span> <span class="cp">%&gt;</span><span class="x">  </span>
+</span><span class='line'><span class="x">    &lt;/li&gt;</span>
+</span><span class='line'><span class="x">    </span><span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">  &lt;/ul&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
