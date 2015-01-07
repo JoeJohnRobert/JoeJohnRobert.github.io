@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[All By My(self)]]></title>
+  <title><![CDATA[ActiveBlogger]]></title>
   <link href="http://JoeJohnRobert.github.io/atom.xml" rel="self"/>
   <link href="http://JoeJohnRobert.github.io/"/>
-  <updated>2015-01-07T13:13:30-05:00</updated>
+  <updated>2015-01-07T13:15:19-05:00</updated>
   <id>http://JoeJohnRobert.github.io/</id>
   <author>
     <name><![CDATA[Joe Cardarelli]]></name>
