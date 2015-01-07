@@ -4,7 +4,7 @@
   <title><![CDATA[All By My(self)]]></title>
   <link href="http://JoeJohnRobert.github.io/atom.xml" rel="self"/>
   <link href="http://JoeJohnRobert.github.io/"/>
-  <updated>2014-12-09T10:41:07-05:00</updated>
+  <updated>2015-01-07T12:53:48-05:00</updated>
   <id>http://JoeJohnRobert.github.io/</id>
   <author>
     <name><![CDATA[Joe Cardarelli]]></name>
@@ -12,6 +12,257 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Decent Exposure]]></title>
+    <link href="http://JoeJohnRobert.github.io/blog/2015/01/07/getting-started-with-decent-exposure/"/>
+    <updated>2015-01-07T10:22:05-05:00</updated>
+    <id>http://JoeJohnRobert.github.io/blog/2015/01/07/getting-started-with-decent-exposure</id>
+    <content type="html"><![CDATA[<h3>A quick guide for getting started with decent_exposure</h3>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Recently, I&rsquo;ve been exploring working with the decent_exposure gem. With decent_exposure you can clean up your controllers and better encapsulate your code. Instead of setting instance variables in each action of your controller, decent_exposure sets up methods in your controller which you can directly call in your view, thereby decreasing repetition.</p>
+
+<p><strong>First steps</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The first thing you are going to do is add <code>gem 'decent_exposure'</code> to your gemfile and then of course <code>bundle</code>.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For the purposes of getting to know decent_exposure, I put together a simple application where musicians or <code>axe_masters</code> can keep track of their many <code>guitars</code>. <code>Guitars</code> are nested as a resource under <code>axe_masters</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">root</span> <span class="s1">&#39;axe_masters#index&#39;</span>
+</span><span class='line'>  <span class="n">resources</span> <span class="ss">:axe_masters</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">resources</span> <span class="ss">:guitars</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Controller setup</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When you first look at a controller which has adopted the decent_exposure way, your first thought might be how little code there actually is. There are no instance variables to define and there is very little going on in each action. You set up some methods for your views using with a call to the <code>expose</code> method provided to you by the gem. Then you set up some redirecting for the <code>create</code>, <code>update</code> and <code>destroy</code> actions and that&rsquo;s about it.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">GuitarsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>  <span class="n">expose</span><span class="p">(</span><span class="ss">:axe_master</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">expose</span><span class="p">(</span><span class="ss">:guitar</span><span class="p">,</span> <span class="ss">attributes</span><span class="p">:</span> <span class="ss">:guitar_params</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">create</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">guitar</span><span class="o">.</span><span class="n">save</span>
+</span><span class='line'>      <span class="n">redirect_to</span> <span class="n">axe_master</span><span class="p">,</span> <span class="ss">notice</span><span class="p">:</span> <span class="s2">&quot;Axe saved!&quot;</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="n">render</span> <span class="ss">:new</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">update</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">guitar</span><span class="o">.</span><span class="n">save</span>
+</span><span class='line'>      <span class="n">redirect_to</span> <span class="n">axe_master</span><span class="p">,</span> <span class="ss">notice</span><span class="p">:</span> <span class="s2">&quot;Axe updated!&quot;</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="n">render</span> <span class="ss">:show</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">destroy</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">guitar</span><span class="o">.</span><span class="n">destroy</span>
+</span><span class='line'>      <span class="n">redirect_to</span> <span class="n">axe_master</span><span class="p">,</span> <span class="ss">notice</span><span class="p">:</span> <span class="s2">&quot;Axe deleted!&quot;</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="n">redirect_to</span> <span class="n">axe_master</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kp">private</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">guitar_params</span>
+</span><span class='line'>      <span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:guitar</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">:make</span><span class="p">,</span> <span class="ss">:model</span><span class="p">,</span> <span class="ss">:color</span><span class="p">,</span> <span class="ss">:axe_master_id</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; As you can see above, rather than defining <code>@axe_master</code> and <code>@guitar</code> instance variables in each action, you call <code>expose</code> and pass the object you&rsquo;d like to reference. Magic, right? Nope, you guessed it; decent_exposure relies on a few conventions. Straight from the documentation, the conventions are as follows. With the <code>guitar</code> object in mind:</p>
+
+<p><strong>1. There is an object named <code>Guitar</code>.</strong>
+<strong>2. <code>Guitar</code> has a <code>.find</code> method that takes an id.</strong>
+<strong>3. There is a params method that returns a Hash-like structure which has either an id key or a guitar_id key.</strong></p>
+
+<p>You will also see, that there is no need to define index, new or show actions. Normally, you would just set these up with instance variables, but using the <code>expose</code> method, decent_exposure serves them up for you. You might be wondering, how does decent_exposure decide whether <code>guitar</code> should be a new instance or one that&rsquo;s already persisted? If there is an <code>id</code> key in params, like on a <code>show</code> page, decent_exposure will try to find the <code>guitar</code> with that <code>id</code>. Othewise, it will create a new instance, like in a form in the <code>new</code> template. If you wanted to search by something other than the <code>id</code>, you can set a value to the <code>finder_parameter</code> as so:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">expose</span><span class="p">(</span><span class="ss">:guitar</span><span class="p">,</span> <span class="ss">finder_parameter</span><span class="p">:</span> <span class="ss">:guitar_id</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Use with strong_parameters</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Another layer of implicitness that I that was pretty cool, is the fact that you don&rsquo;t even have to build out your create or update actions. Normally you would do something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="k">def</span> <span class="nf">create</span>
+</span><span class='line'>    <span class="vi">@axe_master</span> <span class="o">=</span> <span class="no">AxeMaster</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:axe_master_id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@axe_master</span><span class="o">.</span><span class="n">guitars</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">guitar_params</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">guitar</span><span class="o">.</span><span class="n">save</span>
+</span><span class='line'>      <span class="n">redirect_to</span> <span class="n">axe_master</span><span class="p">,</span> <span class="ss">notice</span><span class="p">:</span> <span class="s2">&quot;Axe saved!&quot;</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="n">render</span> <span class="ss">:new</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+With decent_exposure, finding the <code>axe_master</code> in question and building a a <code>guitar</code> from the object all happens implicitly. In order to use strong_parameters, however, there are two bits of code you must add. First, when you <code>expose</code> the <code>guitar</code> object, you have declare the name of your params method that decent_exposure will look for:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">expose</span><span class="p">(</span><span class="ss">:guitar</span><span class="p">,</span> <span class="ss">attributes</span><span class="p">:</span> <span class="ss">:guitar_params</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Second, as of Rails 4, you need to add the following three lines to your <code>application_controller.rb</code> file.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">decent_configuration</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">strategy</span> <span class="no">DecentExposure</span><span class="o">::</span><span class="no">StrongParametersStrategy</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With this in place you are all set to use strong_params.</p>
+
+<p><strong>Views</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Now that our controller is good to go, let&rsquo;s take a look at the views. Just as you guessed, we can call the methods we set up with <code>expose</code> in our views rather than using instance variables. First, we have our template for creating or updating a <code>guitar</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sx">%= form_for [axe_master, guitar] do |f| %&gt;</span>
+</span><span class='line'><span class="sx">  &lt;p&gt;</span>
+</span><span class='line'><span class="sx">    &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">label</span> <span class="ss">:make</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">    &lt;%= f.text_field :make %&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'><span class="sr">  &lt;p&gt;</span>
+</span><span class='line'><span class="sr">    &lt;%= f.label :model %&gt;</span>
+</span><span class='line'><span class="sr">    &lt;%= f.text_field :model %&gt;</span>
+</span><span class='line'><span class="sr">  &lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :color %&gt;</span>
+</span><span class='line'><span class="sx">    &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:color</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  &lt;/p&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= f.hidden_field :axe_master_id, value: axe_master.id %&gt;</span>
+</span><span class='line'><span class="sx">  &lt;p&gt; &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">submit</span> <span class="s1">&#39;Submit!&#39;</span> <span class="sx">%&gt; &lt;/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Next, we have our simple <code>axe_master</code> show page:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sx">%= link_to &quot;New Axe&quot;, new_axe_master_guitar_path(axe_master) %&gt;</span>
+</span><span class='line'><span class="sx">&lt;h1&gt; &lt;%=</span> <span class="n">axe_master</span><span class="o">.</span><span class="n">name</span> <span class="sx">%&gt;&#39;s Page &lt;/h1&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span> <span class="no">Guitars</span> <span class="o">&lt;</span><span class="sr">/h3&gt;</span>
+</span><span class='line'><span class="sr">  &lt;ul&gt; </span>
+</span><span class='line'><span class="sr">    &lt;% guitars.each do |axe| %&gt;</span>
+</span><span class='line'><span class="sr">    &lt;li&gt; </span>
+</span><span class='line'><span class="sr">      &lt;%= axe.make %&gt; - &lt;%= axe.model %&gt;, &lt;%= axe.color %&gt; </span>
+</span><span class='line'><span class="sr">      &lt;%= link_to &quot;Edit&quot;, axe_master_guitar_path(axe_master, axe) %&gt;</span>
+</span><span class='line'><span class="sr">      &lt;%= link_to &quot;Delete&quot;, axe_master_guitar_path(axe_master, axe), :method =&gt; :delete, :confirm =&gt; &quot;Are you sure?&quot; %&gt;  </span>
+</span><span class='line'><span class="sr">    &lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+</span><span class='line'><span class="sx">  &lt;/ul&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As you can see, we reference the <code>axe_master</code>, <code>guitar</code> and <code>guitars</code> methods rather than using any instance variables. In creating the <code>guitars</code> method with <code>expose</code>, decent_exposure allows you to customize how you would like to define a collection of objects by supplying a block. Let&rsquo;s say you only wanted Fender guitars:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">expose</span><span class="p">(</span><span class="ss">:guitars</span><span class="p">)</span> <span class="p">{</span> <span class="no">Guitar</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">make</span><span class="p">:</span> <span class="s1">&#39;Fender&#39;</span><span class="p">)</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>In using the <code>guitars</code> method on the <code>axe_master</code> show page, I assumed you would have to at least explicitly define that you wanted <code>guitars</code> to only include those objects that belong to the <code>axe_master</code> whose page you are on by doing something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">expose</span><span class="p">(</span><span class="ss">:guitars</span><span class="p">)</span> <span class="p">{</span> <span class="n">axe_master</span><span class="o">.</span><span class="n">guitars</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Exposing just the <code>guitars</code> method is enough, however. The rest is implicit. Pretty cool.</p>
+
+<p><strong>Customize and conquer</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hopefully, this simple guide is enough to help you understand decent_exposure and get it up and running yourself. As mentioned before, decent_exposure relies a lot on convention, but there are many more ways to customize its use that aren&rsquo;t mentioned here. Head over to the <a href="https://github.com/hashrocket/decent_exposure">documentation</a> to read up on these.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[jQuery Data Attributes]]></title>
